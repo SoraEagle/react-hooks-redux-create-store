@@ -17,6 +17,8 @@ function reducer(state = {count: 0}, action){
   switch (action.type){
     case "counter/increment":
       return {count: state.count + 1};
+      case "counter/decrement":
+        return {count: state.count - 1};
     default:
       return state;
   }
@@ -30,7 +32,12 @@ function render(){
 let store = createStore();
 store.dispatch({type: "@@INIT"});
 let button = document.getElementById("button");
+let minus = document.getElementById("minus");
 
 button.addEventListener("click", function(){
   store.dispatch({type: "counter/increment"});
+});
+
+minus.addEventListener("click", function(){
+  store.dispatch({type: "counter/decrement"});
 });
